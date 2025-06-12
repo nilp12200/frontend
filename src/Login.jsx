@@ -31,7 +31,11 @@ export default function Login() {
       alert(err.response?.data?.message || 'Server error');
     }
   };
-
+useEffect(() => {
+  axios.get(`${import.meta.env.VITE_API_URL}/api/truck`)
+    .then((res) => setData(res.data))
+    .catch((err) => console.error('API error:', err));
+}, []);
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-indigo-50 to-indigo-200 px-6 py-12">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl">
