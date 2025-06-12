@@ -15,7 +15,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3001/', {
+      const res = await axios.post('http://localhost:3001/api/login', {
         username: username.trim(),   // ✅ Trim to avoid space errors
         password: password.trim()
       });
