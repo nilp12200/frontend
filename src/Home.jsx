@@ -325,11 +325,12 @@ export default function Home() {
   const [truckData, setTruckData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/api/data`) // replace /api/data with your actual backend route
-      .then((res) => setTruckData(res.data))
-      .catch((err) => console.error('Error fetching truck data:', err));
-  }, []);
+  axios
+    .get(`${import.meta.env.VITE_API_URL}/truck`) // 👈 replace here
+    .then((res) => setTruckData(res.data))
+    .catch((err) => console.error('Error fetching truck data:', err));
+}, []);
+
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-r from-yellow-50 to-white">
