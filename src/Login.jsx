@@ -1,7 +1,4 @@
 
-
-
-// Login.jsx
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,19 +12,22 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3001/api/login', {
-        username: username.trim(),   // ✅ Trim to avoid space errors
-        password: password.trim()
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/login`,
+        {
+          username: username.trim(),
+          password: password.trim()
+        }
+      );
 
       if (res.data.success) {
         alert('Login successful');
         navigate('/home');
       } else {
-        alert(res.data.message); // Better message
+        alert(res.data.message || 'Invalid credentials');
       }
     } catch (err) {
-      console.error(err.response?.data || err.message);
+      console.error('Login error:', err.response?.data || err.message);
       alert(err.response?.data?.message || 'Server error');
     }
   };
