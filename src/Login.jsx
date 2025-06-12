@@ -11,14 +11,14 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`,
+         {
+           {
+             username: username.trim(),
+             password: password.trim()
+           }
+         });
 
-
-        {
-          username: username.trim(),
-          password: password.trim()
-        }
-      );
 
       if (res.data.success) {
         alert('Login successful');
